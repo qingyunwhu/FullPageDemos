@@ -1,0 +1,101 @@
+<!--tutorial:https://segmentfault.com/a/1190000002603964-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 引入css -->
+    <link rel="stylesheet" type="text/css" href="./fullPage.js-master/jquery.fullPage.css"/>
+    <!-- fullpage.js依赖于jquery库 -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="./fullPage.js-master/jquery.fullPage.min.js"></script>
+
+    <style type="text/css">
+        body
+        {
+            color: #FFFFFF;
+        }
+        .section{
+            text-align: center;
+        }
+        .section1
+        {
+            background-color: #BFDA00;
+        }
+        .section2
+        {
+            background-color: #2EBE21;
+        }
+        .section3
+        {
+            background-color: #2C3E50;
+        }
+        .section4
+        {
+            background-color: #FF9900;
+        }
+
+        .section5 { background: url('asset/img/intro-bg.png') 50%;}
+        .section6 { background: url('asset/img/env-bg.png') 50%;}
+
+        #menu { margin: 0; padding: 0; position: fixed; left: 10px; top: 10px; list-style-type: none; z-index: 70;}
+        #menu li { float: left; margin:  0 10px 0 0; font-size: 14px;}
+        #menu a { float: left; padding: 10px 20px; background-color: #fff; color: #333; text-decoration: none;}
+        #menu .active a { color: #fff; background-color: #333;}
+
+    </style>
+</head>
+<body>
+<!--1.8 绑定菜单：添加菜单项-->
+<ul id="menu">
+    <li data-menuanchor="page1" class="active"><a href="#page1">第一屏</a></li>
+    <li data-menuanchor="page2"><a href="#page2">第二屏</a></li>
+    <li data-menuanchor="page3"><a href="#page3">第三屏</a></li>
+    <li data-menuanchor="page4"><a href="#page4">第四屏</a></li>
+    <li data-menuanchor="page5"><a href="#page5">第5屏</a></li>
+    <li data-menuanchor="page6"><a href="#page6">第6屏</a></li>
+</ul>
+
+
+<div id="ido">
+    <div class="section section1">
+        <h3>每一个section是一屏，这是第一屏</h3>
+    </div>
+    <div class="section section2" style="text-align:center">
+            <h1 class="slide">第二屏的第一屏</h1>
+            <h1 class="slide">第二屏的第二屏</h1>
+            <h1 class="slide">第二屏的第三屏</h1>
+            <h1 class="slide">第二屏的第四屏</h1>
+    </div>
+    <div class="section section3 active">
+        <h3>每一个section是一屏，这是第三屏，激活了第三屏</h3>
+    </div>
+    <div class="section section4">
+        <h3>每一个section是一屏，这是第四屏</h3>
+    </div>
+
+    <div class="section section5">
+        <h1>每一个section是一屏，这是第5屏--图片背景</h1>
+    </div>
+    <div class="section section6">
+        <h1>每一个section是一屏，这是第6屏--图片背景</h1>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $("#ido").fullpage({
+
+            continuousVertical: true,  //循环演示
+            anchors: ['page1', 'page2', 'page3', 'page4','page5','page6'], //绑定菜单
+            menu: '#menu',
+
+             // 导航
+            'navigation': true
+        });
+    });
+</script>
+
+</body>
+</html>

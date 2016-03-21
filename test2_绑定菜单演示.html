@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>test</title>
+
+<link rel="stylesheet" type="text/css" href="fullPage.js-master/jquery.fullPage.css" />
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="fullPage.js-master/jquery.fullPage.js"></script>
+<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<style>
+	/*自定义导航栏*/
+	#menu {
+        /*margin:0;*/
+        /*padding:0;*/
+		position: fixed;
+		left: 10px;
+		top: 10px;
+        list-style-type: none;
+        z-index: 70;
+	}
+	#menu a,
+	#menu li {
+		float: left;
+
+	}
+	#menu li {
+		margin-right: 5px;
+	}
+	#menu a {
+		padding: 10px 20px;
+		background: #fff;
+		color: #4BBFC3;
+		text-decoration: none;
+	}
+	/*选中跳转栏目的效果*/
+	#menu .active a{
+		background: #333;
+	}
+
+
+    /*#menu { margin: 0; padding: 0; position: fixed; left: 10px; top: 10px; list-style-type: none; z-index: 70;}*/
+    /*#menu li { float: left; margin:  0 10px 0 0; font-size: 14px;}*/
+    /*#menu a { float: left; padding: 10px 20px; background-color: #fff; color: #333; text-decoration: none;}*/
+    /*#menu .active a { color: #fff; background-color: #333;}*/
+
+	.section {
+		overflow: hidden;
+	    color: #fff;
+		font: 50px "Microsoft Yahei";
+		text-align: center;
+	}
+</style>
+
+</head>
+<body>
+<ul id='menu' class='nav'>
+    <li data-menuanchor="page1"><a href="#page1" class='active'>第1个项目</a></li>
+    <li data-menuanchor="page2"><a href="#page2">第2个项目</a></li>
+
+    <li data-menuanchor="page3"><a href="#page3">第3个项目</a></li>
+    <li data-menuanchor="page4"><a href="#page4">第4个项目</a></li>
+    <li data-menuanchor="page5"><a href="#page5">第5个项目</a></li>
+    <li data-menuanchor="page6"><a href="#page6">第6个项目</a></li>
+    <li data-menuanchor="page7"><a href="#page7">第7个项目</a></li>
+    <li data-menuanchor="page8"><a href="#page8">第8个项目</a></li>
+</ul>
+
+<div id="fullpage">
+	<div class="section active">
+		<h3>第一屏</h3>
+		<p>fullPage.js — 基本演示</p>
+	</div>
+	<div class="section">
+
+		<div class="slide"><h3>第二屏的第一屏</h3></div>
+		<div class="slide"><h3>第二屏的第二屏</h3></div>
+		<div class="slide"><h3>第二屏的第三屏</h3></div>
+	</div>
+	<div class="section">
+		<h3>第三屏</h3>
+	</div>
+	<div class="section">
+		<h3>第四屏</h3>
+	</div>
+	<div class="section">
+
+		<h3>第五屏</h3>
+	</div>
+	<div class="section">
+		<h3>第六屏</h3>
+	</div>
+	<div class="section">
+		<h3>第七屏</h3>
+	</div>
+	<div class="section">
+		<h3>第八屏</h3>
+		<p>这是最后一屏</p>
+	</div>
+</div>
+
+<script>
+	$(document).ready(function() {
+        $('#fullpage').fullpage({
+			// 设置每一屏的背景颜色
+			sectionsColor: ['#999', '#4BBFC3', '#7BAABE', '#f90','#1bbc9b', '#4BBFC3', '#7BAABE','#f90'],
+			// 定义锚链接
+			anchors: ['page1', 'page2', 'page3', 'page4','page5','page6','page7','page8'],
+			// 绑定菜单，设定的相关属性与 anchors 的值对应后，菜单可以控制滚动
+			menu : '#menu',
+
+			'navigation': true
+		});
+	});
+</script>
+</body>
+</html>
