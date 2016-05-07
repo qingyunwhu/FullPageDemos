@@ -1,0 +1,131 @@
+<!--仿锤子-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.9/jquery.fullPage.min.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.9/vendors/jquery.easings.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.6.9/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(function()
+        {
+            // 由于 fullpage 没设置事件队列池清空方法，导致划屏操作会重复，发生跳页现象
+            // 使用 alert 结束事件队列，考虑到用户体验，我设计了一个延迟锁定器来结束队列
+            // fullpage 官网地址 https://github.com/alvarotrigo/fullPage.js/
+            // 我太忙，使用这个代码的用户请到 github 提交一个 issues 请开发者加入 clearEvents 方法
+            // 作者 jielie@foxmail.com 欢迎交流
+            var timer;
+            var flag    = true;
+            function lock()
+            {
+                clearTimeout(timer);
+                flag    = false;
+                timer    = setTimeout(function()
+                {
+                    flag= true;
+                }, 200);
+            }
+
+            $('#fullpage').fullpage(
+            {
+                sectionsColor    :            // 背景色
+                [
+                    '#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'
+                ],
+                navigation        : true,        // 显示导航
+                loopBottom        : true,        // 顶部轮滚
+                loopTop            : true,        // 顶部轮滚
+                css3            : true,        // 开启CSS3动画
+
+                onLeave            : function( index, nextIndex, direction )
+                {
+                    var box    = $("#box");
+
+                    // 顶部
+                    if ( index===1 && nextIndex===4 )
+                    {
+                        box.addClass("top");
+                        return false;
+                    }
+                    if ( index===1 && nextIndex===2 && box.hasClass("top") )
+                    {
+                        lock();
+                        box.removeClass("top");
+                        return false;
+                    }
+
+                    // 底部
+                    if ( index===4 && nextIndex===1 )
+                    {
+                        box.addClass("bottom");
+                        return false;
+                    }
+                    if ( index===4 && nextIndex===3 && box.hasClass("bottom") )
+                    {
+                        lock();
+                        box.removeClass("bottom");
+                        return false;
+                    }
+
+                    // 返回事件阻塞
+                    return flag
+                }
+            })
+        })
+    </script>
+
+    <style type="text/css">
+        #box
+        {
+            transition: all 1000ms cubic-bezier(0.86, 0, 0.07, 1);
+            -webkit-transition: all 1000ms cubic-bezier(0.86, 0, 0.07, 1);
+        }
+
+        #box.top
+        {
+            transform: translate3d(0px, 200px, 0px);
+            -webkit-transform: translate3d(0px, 200px, 0px);
+        }
+
+        #box.bottom
+        {
+            transform: translate3d(0px, -200px, 0px);
+            -webkit-transform: translate3d(0px, -200px, 0px);
+        }
+
+        .section {
+            text-align: center;
+            font: 50px "Microsoft Yahei";
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box">
+        <div id="fullpage">
+            <div style="height:200px; background:red"></div>
+
+            <div>
+                <div class="section">
+                    <h3>第一屏</h3>
+                </div>
+                <div class="section">
+                    <h3>第二屏</h3>
+                </div>
+                <div class="section">
+                    <h3>第三屏</h3>
+                </div>
+                <div class="section">
+                    <h3>第四屏</h3>
+                </div>
+            </div>
+
+            <div style="height:200px; background:blue"></div>
+        </div>
+    </div>
+
+</body>
+</html>

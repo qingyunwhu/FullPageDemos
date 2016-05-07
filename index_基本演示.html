@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="fullPage.js-master/jquery.fullPage.css" />
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="fullPage.js-master/jquery.fullPage.js"></script>
+    <style>
+         .section { text-align: center; font: 50px "Microsoft Yahei"; color: #000;}
+    </style>
+</head>
+<body>
+<div id="fullpage">
+    <div class="section">第一屏</div>
+    <div class="section">第二屏</div>
+    <div class="section">
+        <div class="slide">第三屏的第一屏</div>
+        <div class="slide">第三屏的第二屏</div>
+        <div class="slide">第三屏的第三屏</div>
+    </div>
+    <div class="section">第四屏</div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+            sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90']
+        });
+    });
+</script>
+</body>
+</html>
